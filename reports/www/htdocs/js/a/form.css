@@ -1,0 +1,55 @@
+form{margin:0;padding:0;font-size:1em}
+input{font:1em Arial,Tahoma,Verdana,Arial,Sans-Serif;color:#484848;background:#f8f8ff;border:1px solid #ccc;border-left-color:#666;border-top-color:#666;padding:2px}
+input:hover{background:#f0f0ff;}
+textarea{font:1em Arial,Tahoma,Verdana,Arial,Sans-Serif;color:#484848;background:#f8f8ff;border:1px solid #ccc;border-left-color:#666;border-top-color:#666;padding:2px}
+textarea:hover{background:#f0f0ff;}
+select{font:1em Arial,Tahoma,Verdana,Arial,Sans-Serif;color:#484848;background:#f8f8ff;border:1px solid #ccc;border-left-color:#666;border-top-color:#666;padding:2px}
+select:hover{background:#f0f0ff;}
+input[type="checkbox"],input[type="radio"]{background:transparent;border:0;}
+
+/* tables in form */
+form table{border-collapse:collapse;border-spacing:0;width:100%;}
+form table.form th{width:20%;text-align:left;padding:0.25em;vertical-align:top;font-weight:normal;}
+form table.form th.br{white-space:normal;}
+form table.form span.star{color:#f60;font-weight:bold;margin-left:0.3em}
+form table.form td{padding:0.25em;vertical-align:top;}
+form table.form tr.continue th{padding:0 0.5em 0.5em 0.5em;border-top:0;}
+form table.form tr.continue td{padding:0 0.5em 0.5em 0.5em;border-top:0;}
+form table.form label{cursor:pointer;font-size:1em;}
+form table.form div.radio{position:relative;}
+form table.form div.radio label{display:block;position:relative;padding:2px 0 0 2em}
+form table.form div.radio input{display:block;position:absolute;left:0;top:0;}
+form table.form tr.err{background-color:#f99}
+/*form table.form tr.err input{border:1px solid #c00;padding:2px}*/
+form table.form tr.err th{color:#fff}
+form table.form tr th.err{background-color:#f99;color:#fff}
+form table.form tr td.err{background-color:#f99;color:#fff}
+form table.form table.radios td{padding:0;border:1px solid red}
+form table.form tr.continue table.radios td{padding:0;}
+form div.hint{color:#aaa;font-size:0.7em;}
+form table.form tr.err div.hint{color:#fff;}
+form table.form ul.checks{margin:0;padding:0;list-style:none}
+form table.form ul.checks li{margin:0 1em 0 0;padding:0;height:1.5em;width:25em;float:left;overflow:hidden}
+form table.form h4{border-top:1px dotted #ccc;margin:1em 0 0 0;color:#ccc;padding:0.25em 0 0 0}
+
+form input.readonly{color:#999}
+form input.l{width:24em}
+form input.m{width:18em}
+form input.s{font-size:1em;width:9.75em}
+form input.code{width:194px;margin:4px 0 0 0;text-align:center;}
+html>body form input.code{width:196px;}
+form textarea.w{width:95%;height:10em}
+form textarea.l{width:24em;height:30em}
+form textarea.m{width:20em;height:15em;}
+form textarea.s{width:9.75em;font-size:1em;height:10em}
+form select.l{width:24em}
+form select.m{width:18.4em;}
+html>body form select.m{width:18.3em;}
+form select.s{font-size:1em;width:14em}
+form img.captcha{width:198px;height:50px;border:1px solid #7f9db9}
+form input.captcha{width:194px;margin:4px 0 0 0;text-align:center}
+html>body form input.captcha{width:196px;}
+form input.btn{position:relative;top:1px;height:24px;width:12.7em;padding:0 0.5em 0 0.5em;margin:0;border-left:1px solid #ccd;border-top:1px solid #ccd;border-bottom:1px solid #669;border-right:1px solid #669;color:#006;background:#fff url("/i/formBtn.gif") repeat-x 0 0;font-size:0.8em;cursor:pointer;}
+html>body form .btn{position:normal;top:0;}
+form input.btnS{position:relative;top:1px;height:24px;width:12.7em;padding:0 0.5em 0 0.5em;margin:0;border-left:1px solid #ccd;border-top:1px solid #ccd;border-bottom:1px solid #669;border-right:1px solid #669;color:#006;background:#fff url("/i/formBtn.gif") repeat-x 0 0;font-size:0.8em;cursor:pointer;}
+

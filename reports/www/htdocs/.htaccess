@@ -1,0 +1,106 @@
+Options Indexes FollowSymLinks
+RewriteEngine On
+
+# canonical domain name:
+	RewriteCond %{HTTP_HOST}					!^reports\.dimas				[NC]
+	RewriteCond %{HTTP_HOST}					!^reports\.spider				[NC]
+	RewriteCond %{HTTP_HOST}					!^reports.playnext\.ru				[NC]
+	RewriteRule ^(.*)						http://reports.playnext.ru/$1			[R=301,L]
+
+# language selection - en:
+	RewriteCond %{HTTP_HOST}					(^en\.)|(\.com$)				[NC]
+	RewriteCond %{QUERY_STRING}					!l=en						[NC]
+	RewriteRule ^(.*)						$1?l=en						[NS,QSA]
+
+# default page: 
+RewriteRule	^\/?$							/E7.php						[QSA,L]
+
+# CSS invalidation:
+RewriteRule ^css/(.+?)\.([\d.]+)\.css$				/css/$1.css?ver=$2				[QSA]
+
+# generic access to Action CSS:
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^css/([A-Z].+)\.css$					/E7.php?a=$1&css=1				[QSA,L]
+
+# image records
+RewriteRule ^i/(.+?)\.CustomerImage([0-9]+)\.(\w{2,4})$			/i/$1.$2.$3					[QSA,L]
+RewriteRule ^i/(.+?)\.FirmImage([0-9]+)\.(\w{2,4})$			/i/$1.$2.$3					[QSA,L]
+
+RewriteRule ^i/([A-Z][a-zA-Z0-9]+?)\.([0-9]+)\.\w{2,4}$			/E5.php?a=Image&entity=$1&id=$2			[QSA,L]
+RewriteRule ^i/([A-Z][a-zA-Z0-9]+?)\.w?([0-9]+)(px)?\.([0-9]+)\.\w{2,4}$	/E7.php?a=Image&entity=$1&width=$2&id=$4	[QSA,L]
+RewriteRule ^i/([A-Z][a-zA-Z0-9]+?)\.h([0-9]+)(px)?(\.cw([0-9]+))?\.([0-9]+)\.\w{2,4}$	/E7.php?a=Image&entity=$1&height=$2&cropWidth=$5&id=$6	[QSA,L]
+RewriteRule ^i/([A-Z][a-zA-Z0-9]+?)\.w?([0-9]+)\.c([0-9]+)x([0-9]+)-([0-9]+)x([0-9]+)\.([0-9]+)\.\w{2,4}$	/E7.php?a=Image&entity=$1&width=$2&cropX=$3&cropY=$4&cropWidth=$5&cropHeight=$6&id=$7	[QSA,L]
+RewriteRule ^i/([A-Z][a-zA-Z0-9]+?)\.h([0-9]+)(px)?\.c([0-9]+)x([0-9]+)(px)?-([0-9]+)x([0-9]+)(px)?\.([0-9]+)\.\w{2,4}$	/E7.php?a=Image&entity=$1&height=$2&cropX=$4&cropY=$5&cropWidth=$7&$cropHeight=$8&id=$10	[QSA,L]
+RewriteRule ^i/([A-Z][a-zA-Z0-9]+?)\.c([0-9]+)x([0-9]+)(px)?-([0-9]+)x([0-9]+)(px)?\.([0-9]+)\.\w{2,4}$	/E7.php?a=Image&entity=$1&cropX=$2&cropY=$3&cropWidth=$5&cropHeight=$6&id=$8	[QSA,L]
+RewriteRule ^i/([A-Z][a-zA-Z0-9]+?)\.h([0-9]+)(px)?\.([0-9]+)\.\w{2,4}$	/E7.php?a=Image&entity=$1&height=$2&id=$4	[QSA,L]
+RewriteRule ^i/([A-Z][a-zA-Z0-9]+?)\.d([0-9]+)(px)?\.([0-9]+)\.\w{2,4}$	/E7.php?a=Image&entity=$1&dim=$2&id=$4		[QSA,L]
+RewriteRule ^i/([A-Z][a-zA-Z0-9]+?)\.s([0-9]+)(px)?\.([0-9]+)\.\w{2,4}$	/E7.php?a=Image&entity=$1&size=$2&id=$4		[QSA,L]
+
+# AFTER(!) image localization:
+#RewriteCond %{HTTP_HOST}						(^en\.)|(\.com$)				[NC]
+#RewriteRule ^i/([^/]+)$							i/en/$1						[NS,L]
+
+# flash movies are also localized
+#RewriteCond %{HTTP_HOST}						(^en\.)|(\.com$)				[NC]
+#RewriteRule ^f/([^/]+)$							f/en/$1						[NS,L]
+
+# generic file records:
+RewriteRule ^files/(.+?)\.([0-9]+)\.\w*$				/E7.php?a=Download&id=$2			[QSA,L]
+RewriteRule ^forum/files/([^\/]+?)\.([0-9]+)\.\w*$			/E7.php?a=Download&id=$2&entity=$1		[QSA,L]
+
+# redirect for old pages:
+#RewriteRule ^about\/$							/company.html					[R=301,L]
+
+# special pages:
+RewriteRule ^stats\/(.+?)\/$						/E7.php?a=CampaignStatsPage&utm=$1		[QSA,L]
+
+
+
+
+
+
+
+
+RewriteRule ^in\.html$							/E7.php?a=In					[QSA,L]
+RewriteRule ^out\.html$							/E7.php?a=Out					[QSA,L]
+RewriteRule ^forgot-password\/?$					/E7.php?a=ForgotPassword			[QSA,L]
+RewriteRule ^forgot-password\/sent.html$				/E7.php?a=ForgotPasswordSent			[QSA,L]
+RewriteRule ^registration/?$						/E7.php?a=UserRegistration			[QSA,L]
+RewriteRule ^registration/customer.html$				/E7.php?a=UserRegistrationCustomer		[QSA,L]
+RewriteRule ^registration/worker.html$					/E7.php?a=UserRegistrationWorker		[QSA,L]
+RewriteRule ^registration/done\.html$					/E7.php?a=UserRegistered			[QSA,L]
+RewriteRule ^registration/confirmation-needed\.html$			/E7.php?a=ConfirmationNeeded			[QSA,L]
+RewriteRule ^registration/confirmation\.html$				/E7.php?a=ConfirmationDone			[QSA,L]
+
+RewriteRule ^my\/?$							/E7.php?a=UserHomePage				[QSA,L]
+RewriteRule ^del\.html$							/E7.php?a=UserDelItem				[QSA,L]
+RewriteRule ^del\.json$							/E7.php?a=UserDelItem&json=1			[QSA,L]
+RewriteRule ^pos\.html$							/E7.php?a=UserPosItem				[QSA,L]
+RewriteRule ^toggle\.html$						/E7.php?a=UserToggleItem			[QSA,L]
+
+RewriteRule ^terms-and-conditions.html$					/E7.php?a=TermsAndConditions			[QSA,L]
+RewriteRule ^advertising.html$						/E7.php?a=Advertising				[QSA,L]
+
+RewriteRule ^unsubscribe/firm.html$					/E7.php?a=UnsubscribeFirm			[QSA,L]
+RewriteRule ^unsubscribe/firm-done.html$				/E7.php?a=UnsubscribeFirmDone			[QSA,L]
+
+# CAPTCHA:
+RewriteRule ^captcha.png$						/E7.php?a=CAPTCHA				[QSA,L]
+
+# Generic page by ID with optional paging (/smth.<pageID>[.page-<pageNum>].html): 
+RewriteRule ^Admin(.+?).page-([0-9]+)\.html$				/E7.php?a=Admin$1&p=$2				[QSA,L]
+RewriteRule ^[^/]+\.([0-9]+)(\.page-([0-9]+))?.html$			/E7.php?pid=$1&p=$3				[QSA,L]
+
+# /<action>.html = action (no DB data is fetched):
+RewriteRule	^([a-zA-Z0-9-.]+)\.html$				/E7.php?a=$1					[QSA,L]
+
+# /<action>.xml = xml-action (page record is not fetched by E5):
+RewriteRule	^([a-zA-Z0-9-.]+)\.xml$					/E7.php?a=$1&xml=1				[QSA,L]
+
+# /<action>.json = json-action (page record is not fetched by E5):
+RewriteRule	^([a-zA-Z0-9-.]+)\.json$				/E7.php?a=$1&json=1				[QSA,L]
+
+# Special admin pages:
+# Special redirect for legacy "admin":
+RewriteRule	^admin\/?$						/AdminHomePage.html				[QSA]
