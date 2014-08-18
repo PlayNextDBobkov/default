@@ -1,5 +1,5 @@
 <?
-	class HomePage extends PublicPage {
+	class GenerateKeywords extends PublicPage {
 		protected function checkAccess() {
 			parent::checkAccess();
 		}
