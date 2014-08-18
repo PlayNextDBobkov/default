@@ -39,9 +39,7 @@
 		}
 
 		protected function showBody() {
-			da($_SERVER);
-			die();
-			
+
 			$dateStart = $_GET['dateStart'] ? $_GET['dateStart'] : "2014-06-12";
 			$dateStop = $_GET['dateStop'] ? $_GET['dateStop'] : "2014-06-24";
 
